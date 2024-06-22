@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Pestisida</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Search Pestisida</h2>
+        <form action="/search" method="POST">
+            <label for="nama_hama">Nama Hama:</label><br>
+            <input type="text" id="nama_hama" name="nama_hama" required><br><br>
+            <label for="gejala_serangan">Gejala Serangan:</label><br>
+            <input type="text" id="gejala_serangan" name="gejala_serangan" required><br><br>
+            <input type="submit" value="Search">
+        </form>
+    </div>
+    
+    <div class="table-container">
+        {% if tables %}
+            {% for table in tables %}
+                <h3>Filtered Result:</h3>
+                {{ table|safe }}
+            {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>
